@@ -1,5 +1,12 @@
-const httpServer = require("http").createServer();
-const io = require("socket.io")(httpServer, {
+const app = require("express")();
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+const io = require("socket.io")(app, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"],
@@ -66,4 +73,4 @@ function disconnectFromAll(id, ip) {
   io.to(ip).emit("remove disconnected", id);
 }
 
-httpServer.listen(3161, console.log("listening *3161"));
+app.listen(3161, console.log("listening *3161"));
