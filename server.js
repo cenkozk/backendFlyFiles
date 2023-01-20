@@ -70,4 +70,4 @@ function disconnectFromAll(id, ip) {
   io.to(ip).emit("remove disconnected", id);
 }
 
-httpServer.listen(3161, console.log("listening *3161"));
+httpServer.listen(3161, console.log("listening server *3161"));
