@@ -2,13 +2,13 @@ const httpServer = require("http").createServer();
 const cors = require("cors");
 
 httpServer.on("request", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://fly-files.vercel.app");
+  res.setHeader("Access-Control-Allow-Origin", "*");
 });
 
 const io = require("socket.io")(httpServer);
 
 // Use cors middleware
-io.use(cors({ origin: "https://fly-files.vercel.app" }));
+io.use(cors({ origin: "d" }));
 
 var usersArr = [];
 
@@ -70,4 +70,4 @@ function disconnectFromAll(id, ip) {
   io.to(ip).emit("remove disconnected", id);
 }
 
-httpServer.listen(3161, console.log("listening server *3161"));
+httpServer.listen(`0.0.0.0:$PORT`, console.log("listening *3161"));
