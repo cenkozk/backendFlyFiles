@@ -2,7 +2,7 @@ const httpServer = require("http").createServer();
 const cors = require("cors");
 
 httpServer.on("request", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "https://fly-files.vercel.app");
 });
 
 const io = require("socket.io")(httpServer);
