@@ -1,17 +1,16 @@
 const httpServer = require("http").createServer();
-const cors = require("cors");
 
 const PORT = process.env.PORT;
 console.log("port:", PORT);
 
-httpServer.on("request", (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://fly-files.vercel.app");
+const io = require("socket.io")(httpServer, {
+  cors: {
+    origin: "https://fly-files.vercel.app",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true,
+  },
 });
-
-const io = require("socket.io")(httpServer);
-
-// Use cors middleware
-io.use(cors({ origin: "https://fly-files.vercel.app" }));
 
 var usersArr = [];
 
@@ -73,4 +72,4 @@ function disconnectFromAll(id, ip) {
   io.to(ip).emit("remove disconnected", id);
 }
 
-httpServer.listen(PORT,"0.0.0.0", console.log(`listening on 0.0.0.0:${PORT}`));
+httpServer.listen(PORT, "0.0.0.0", console.log(`listening on 0.0.0.0:${PORT}`));
