@@ -8,7 +8,7 @@ httpServer.on("request", (req, res) => {
 const io = require("socket.io")(httpServer);
 
 // Use cors middleware
-io.use(cors({ origin: "d" }));
+io.use(cors({ origin: "https://fly-files.vercel.app" }));
 
 var usersArr = [];
 
