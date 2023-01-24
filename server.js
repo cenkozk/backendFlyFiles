@@ -1,6 +1,8 @@
 const httpServer = require("http").createServer();
 const cors = require("cors");
 
+const PORT = process.env.PORT || 3161;
+
 httpServer.on("request", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 });
