@@ -2,6 +2,7 @@ const httpServer = require("http").createServer();
 const cors = require("cors");
 
 const PORT = process.env.PORT;
+console.log("port:", PORT);
 
 httpServer.on("request", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "https://fly-files.vercel.app");
