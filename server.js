@@ -70,4 +70,4 @@ function disconnectFromAll(id, ip) {
   io.to(ip).emit("remove disconnected", id);
 }
 
-httpServer.listen(`0.0.0.0:$PORT`, console.log(`listening on 0.0.0.0:$PORT`));
+httpServer.listen(PORT,"0.0.0.0", console.log(`listening on 0.0.0.0:${PORT}`));
